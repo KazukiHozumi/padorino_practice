@@ -33,4 +33,6 @@ Padrino.configure_apps do
 end
 
 # Mounts the core application for this project
+
+Padrino.mount('NiftyCup::Football', :app_file => Padrino.root('football/app.rb')).to('/football')
 Padrino.mount('NiftyCup::App', :app_file => Padrino.root('app/app.rb')).to('/')
