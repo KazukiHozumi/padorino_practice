@@ -1,5 +1,5 @@
 NiftyCup::Football.controllers :team do
-  
+
   # get :index, :map => '/foo/bar' do
   #   session[:foo] = 'bar'
   #   render 'index'
@@ -18,13 +18,16 @@ NiftyCup::Football.controllers :team do
   # get '/example' do
   #   'Hello world!'
   # end
-  
-  get :index do
 
+  get :index do
+    @teams = Team.all
+    jbuilder :'team/team_index'
   end
 
   post :create do
-
+    params = JSON.parse(require.body.read)
+    team = Team.new(name: params['name'])
+    team.save!
   end
 
 end
